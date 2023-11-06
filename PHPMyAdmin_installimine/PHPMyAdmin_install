@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Skripti algus
+
+# Kontrollib kas skripti käivitaja on kasutaja "root"
+if [ -x "$(command -v phpmyadmin)" ]; then
+    echo "PHPMyAdmin is already installed."
+    exit 1
+fi
+
+# Uuendab pakide listi
+apt update
+
+# Install PHPMyAdmin
+apt install phpmyadmin
+
+# Kontrollib kas allalaadimine on õnnestunud
+if [ $? -eq 0 ]; then
+    echo "PHPMyAdmin has been successfully installed."
+else
+    echo "Failed to install PHPMyAdmin."
+fi
+
+# Skripti l6pp
