@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Check if PHP is not installed
+if [ ! -x "$(command -v php)" ]; then
+    echo "PHP is not installed."
+    exit 1
+fi
+
+# Remove PHP and its extensions
+sudo apt remove --purge php php-mysql php-cli php-curl
+
+# Check the uninstallation status
+if [ $? -eq 0 ]; then
+    echo "PHP has been successfully uninstalled."
+else
+    echo "Failed to uninstall PHP."
+fi
+
