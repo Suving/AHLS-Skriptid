@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Skripti algus
+
+# Kontrollib kas PHPMyAdmin on olemas
+if [ ! -x "$(command -v phpmyadmin)" ]; then
+    echo "PHPMyAdmin is not installed."
+    exit 1
+fi
+
+# Uninstall PHPMyAdmin
+apt remove --purge phpmyadmin
+
+# Eemaldab configuration files
+rm -rf /etc/phpmyadmin
+
+# Kontrollib kas eemaldamine on õnnestunud
+if [ $? -eq 0 ]; then
+    echo "PHPMyAdmin has been successfully uninstalled."
+else
+    echo "Failed to uninstall PHPMyAdmin."
+fi
+
+# Skripti l6pp
