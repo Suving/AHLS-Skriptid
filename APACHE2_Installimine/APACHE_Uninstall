@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Skripti algus
+
+# Kontrollib kas skripti käivitab "root" kasutaja
+if [ "$EUID" -ne 0 ]; then
+    echo "This script must be run with root privileges. Please use 'sudo'."
+    exit 1
+fi
+
+# Kontrollib kas Apache on alla laaditud
+if dpkg -l | grep -q "apache2"; then
+    echo "Uninstalling Apache2..."
+    apt purge apache2 -y
+    apt autoremove -y
+    apt clean
+
+    # Kontrollib kas Apache on edukalt eemaldatud
+    if ! dpkg -l | grep -q "apache2"; then
+        echo "Apache2 has been successfully uninstalled."
+    else
+        echo "Failed to uninstall Apache2. Please check for errors."
+    fi
+else
+    echo "Apache2 is not installed on this system."
+fi
+
+# Skripti l6pp
