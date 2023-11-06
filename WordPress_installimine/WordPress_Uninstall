@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Check if WordPress is not installed
+if [ ! -e /var/www/html/wordpress/wp-config.php ]; then
+    echo "WordPress is not installed."
+    exit 1
+fi
+
+# Remove the WordPress files
+cd /var/www/html
+sudo rm -rf wordpress
+
+# Remove the WordPress database
+
+# Remove the Apache configuration for WordPress
+
+# Check if the uninstallation was successful
+if [ ! -e /var/www/html/wordpress/wp-config.php ]; then
+    echo "WordPress has been successfully uninstalled."
+else
+    echo "Failed to uninstall WordPress."
+fi
+
