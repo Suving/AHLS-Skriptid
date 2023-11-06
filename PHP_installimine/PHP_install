@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Skripti algus
+
+# Kontrollib kas PHP on juba installitud
+if [ -x "$(command -v php)" ]; then
+    echo "PHP is already installed."
+    exit 1
+fi
+
+# Update package list
+sudo apt update
+
+# Install PHP
+sudo apt install php
+
+# installation status
+if [ $? -eq 0 ]; then
+    echo "PHP has been successfully installed."
+else
+    echo "Failed to install PHP."
+fi
+
+# Skripti l6pp
