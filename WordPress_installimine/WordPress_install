@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Check if WordPress is already installed
+if [ -e /var/www/html/wordpress/wp-config.php ]; then
+    echo "WordPress is already installed."
+    exit 1
+fi
+
+# Update the package list
+sudo apt update
+
+# Install required packages (e.g., Apache, MySQL, PHP) if not already installed
+
+# Download and set up WordPress
+cd /var/www/html
+sudo wget https://wordpress.org/latest.tar.gz
+sudo tar -xvf latest.tar.gz
+sudo mv wordpress/* .
+sudo rmdir wordpress
+sudo rm latest.tar.gz
+
+# Create a new MySQL database and user for WordPress
+
+# Set the correct file permissions
+
+# Configure Apache to serve the WordPress site
+
+# Access the WordPress setup via a web browser to complete the installation
+
+# Check if the installation was successful
+if [ -e /var/www/html/wordpress/wp-config.php ]; then
+    echo "WordPress has been successfully installed."
+else
+    echo "Failed to install WordPress."
+fi
+
